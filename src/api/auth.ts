@@ -1,23 +1,18 @@
-import axios from 'axios';
+import axios, { AxiosPromise } from 'axios';
+import { User, UserForm } from '@/types/user';
 
-export const login = async function(email: string, password: string) {
-  //TODO 로그인 기능 구현
-  // try {
-  //   const send_data = {
-  //     email: email,
-  //     password: password,
-  //   };
-  //   const { data } = await axios.post('http://localhost/api/user', send_data);
-  //   return data;
-  // } catch (e) {
-  //   console.log(e);
-  // }
+export const register = (data: UserForm): AxiosPromise<User> => {
+  return axios.post('/api/auth/register', data);
 };
 
-export const logout = async function() {
-  //TODO 로그아웃 기능 구현
+export const login = (data: UserForm): AxiosPromise<User> => {
+  return axios.post('/api/auth/login', data);
 };
 
-export const signup = async function() {
-  //TODO 회원가입 기능 구현
+export const check = (): AxiosPromise<User> => {
+  return axios.get('/api/auth/check');
+};
+
+export const logout = () => {
+  return axios.post('/api/auth/logout');
 };
