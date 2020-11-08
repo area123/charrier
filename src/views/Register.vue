@@ -67,6 +67,7 @@ export default Vue.extend({
       data.append('email', this.email);
       data.append('password', this.password);
       data.append('name', this.name);
+      // @ts-ignore
       data.append('avatar', this.$refs.file.files[0]);
       this.$store.dispatch('user/register', data);
     },

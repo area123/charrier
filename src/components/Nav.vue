@@ -4,7 +4,7 @@
       router-link.navbar-item(:to="{ name: 'Home' }") charrier
     .navbar-menu
       .navbar-end
-        button.button.is-primary
+        button.button.is-primary(@click="onClick")
           strong 로그아웃
 </template>
 
@@ -15,6 +15,12 @@ export default Vue.extend({
   data() {
     return {};
   },
+  methods:{
+    onClick() {
+      this.$store.dispatch('user/logout');
+      this.$router.push({ name: 'Home' });
+    },
+  }
 });
 </script>
 

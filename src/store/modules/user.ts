@@ -21,6 +21,7 @@ const user: Module<IUser, IRootState> = {
       try {
         const userResponse: AxiosResponse<User> = await register(data);
         commit('set_user', userResponse.data);
+        commit('set_user_error', null);
       } catch (e) {
         const response = (e as AxiosError).response;
         commit('set_user_error', response);
@@ -33,11 +34,12 @@ const user: Module<IUser, IRootState> = {
       } catch (e) {
         const response = (e as AxiosError).response;
         commit('set_user_error', response);
+        throw e;
       }
     },
-    async check({ commit }) {
+    async logout({ commit }) {
       await logout();
-      commit('set_user', check());
+      commit('set_user', null);
     },
   },
   mutations: {
