@@ -1,4 +1,4 @@
-import { register, login, check, logout } from '@/api/auth';
+import { register, login, logout } from '@/api/auth';
 import { Module } from 'vuex';
 import { IRootState } from '@/store';
 import { User, UserForm } from '@/types/user';

@@ -1,23 +1,32 @@
 <template lang="pug">
-  div
+  div(v-if='loading')
     Nav
     .columns
-      aside.column.is-3
+      aside.column.is-12
         .columns.is-block
-          UserListItem(v-for="n in 20")
-      aside.column.is-9
-        .columns.is-block
-          MessageListItem(v-for="n in 10" v-bind:writer="true")
+          template(v-for="message in messages")
+            UserListItem(:message="message")
 </template>
 
 <script>
-import UserListItem from '@/components/UserListItem';
-import Nav from '@/components/Nav';
-import MessageListItem from '@/components/MessageListItem';
+import UserListItem from "@/components/UserListItem";
+import Nav from "@/components/Nav";
+import MessageListItem from "@/components/MessageListItem";
 
 export default {
-  name: 'Chatting',
+  computed: {
+    loading: function() {
+      return this.$store.state.chatting.isLoading;
+    },
+    messages: function() {
+      return this.$store.state.chatting.message;
+    }
+  },
+  name: "Chatting",
   components: { Nav, UserListItem, MessageListItem },
+  created() {
+    this.$store.dispatch("chatting/list");
+  }
 };
 </script>
 

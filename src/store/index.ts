@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import user from '@/store/modules/user';
+import chatting from '@/store/modules/chatting';
 
 Vue.use(Vuex);
 
@@ -14,5 +15,6 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     user,
+    chatting,
   },
 });

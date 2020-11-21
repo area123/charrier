@@ -1,5 +1,5 @@
 <template lang="pug">
-  .column
+  .column()
     .card
       .card-content
         .media
@@ -22,6 +22,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
+
   data() {
     return {
       user_id: '유저 아이디',
